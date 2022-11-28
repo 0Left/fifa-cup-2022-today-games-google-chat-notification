@@ -52,6 +52,9 @@ function login(email,password){
   PropertiesService.getScriptProperties().setProperty("bearerToken",token)
   return parsedResponse;
 }
+function executeRegister(){
+    console.log(register("InsertName","InsertEmail","InsertPassword"))
+}
 function register(name,email,password){
   let fetchBody = {
   "name": name,
@@ -59,12 +62,12 @@ function register(name,email,password){
   "password": password,
   "passwordConfirm" : password
   }
-  ,jsonObj = JSON.stringify(fetchBody)
-  ,options = {
+  let jsonObj = JSON.stringify(fetchBody)
+  let options = {
   'Method' : 'POST',
   'contentType': 'application/json',
   'payload' : jsonObj
   }
-  ,response = UrlFetchApp.fetch("http://api.cup2022.ir/api/v1/user",options)
+  let response = UrlFetchApp.fetch("http://api.cup2022.ir/api/v1/user",options)
   return JSON.parse(response);
 }

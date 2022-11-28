@@ -37,9 +37,8 @@ class chatNotificationBot {
     let response;
     if (url) {
       try {
-        const payload = notificationsBot.makeCard(gameEvent);
-        console.log(payload)
-        const options = {
+        let payload = notificationsBot.makeCard(gameEvent);
+        let options = {
           'method' : 'post',
           'contentType': 'application/json; charset=UTF-8',
           'muteHttpExceptions' : true,
@@ -57,7 +56,7 @@ class chatNotificationBot {
   }
 
   makeCard(gameEvent) {
-    const self = this,
+    let self = this,
           sections = [],
           cards = [],
           card = {},

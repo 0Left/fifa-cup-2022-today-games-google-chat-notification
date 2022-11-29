@@ -1,6 +1,6 @@
 function sendNotification(){
   let jogosDoDia = getGamesListToday();
-  //jogosDoDia.map
+
   let mapJogos = jogosDoDia.map((value)=>{
     return {
       casa:
@@ -12,10 +12,11 @@ function sendNotification(){
         {placar: value.away_score,
         logo: value.away_flag,
          time: value.away_team_en
-        }
+        },
+        horario : value.local_date
       }
   })
-
+  //#TODO ordenar pelo horario, do mais cedo para mais tarde
   chatNotificationBot.postToRoom(mapJogos)
 }
 /* 
